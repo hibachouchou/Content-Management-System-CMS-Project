@@ -28,5 +28,5 @@ Route::get('/register', function () {
 
 Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/create_category', [CategoryController::class, 'create_category']);
-Route::put('/update_category', [CategoryController::class, 'update_category']);
-Route::delete('/destroy_category', [CategoryController::class, 'destroy_category']);
+Route::put('/update_category/{id}', [CategoryController::class, 'update_category']);
+Route::delete('/destroy_category/{id}', [CategoryController::class, 'destroy_category']);

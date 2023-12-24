@@ -36,7 +36,7 @@ class CategoryController extends Controller
         }
 
         // update category 
-        public function update_category($id)
+        public function update_category($id, Request $request)
         {
             $category = Category::findOrFail($id);
     
