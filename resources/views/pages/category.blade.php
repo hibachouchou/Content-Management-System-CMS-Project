@@ -23,15 +23,16 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5">
+            <form action="/create_category" class="p-4 md:p-5" method="POST">
+                @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Category name" required="">
+                        <input type="text"  id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Category name" required="" name="name">
                     </div>
                     <div class="col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Autor" required="">
+                        <input type="text"  id="author" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Autor" required="" name="author">
                     </div>
                 <button type="submit" class="text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
@@ -59,12 +60,13 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($categories as $category)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   Category1
+                    {{$category->name}}
                 </th>
                 <td class="px-6 py-4">
-                    Hiba Admin
+                    {{$category->author}}
                 </td>
                 <td class="px-6 py-4 inline-flex rounded-md shadow-sm" role="group">
     <button type="button" data-modal-target="crud-modal2" data-modal-toggle="crud-modal2" class="px-4 py-2 text-sm font-medium text-blue-700 bg-transparent border border-blue-900 rounded-s-lg hover:bg-blue-700 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-blue-700 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
@@ -75,38 +77,8 @@
     </button>
                 </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   Category2
-                </th>
-                <td class="px-6 py-4">
-                    Hiba Admin
-                </td>
-                <td class="px-6 py-4 inline-flex rounded-md shadow-sm" role="group">
-    <button type="button" class="px-4 py-2 text-sm font-medium text-blue-700 bg-transparent border border-blue-900 rounded-s-lg hover:bg-blue-700 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-blue-700 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-      Update
-    </button>
-    <button type="button" class="px-4 py-2 text-sm font-medium text-red-700 bg-transparent border border-red-900 rounded-e-lg hover:bg-red-700 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-red-700 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-      Delete
-    </button>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   Category 3
-                </th>
-                <td class="px-6 py-4">
-                    Hiba Admin
-                </td>
-                <td class="px-6 py-4 inline-flex rounded-md shadow-sm" role="group">
-    <button type="button" class="px-4 py-2 text-sm font-medium text-blue-700 bg-transparent border border-blue-900 rounded-s-lg hover:bg-blue-700 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-blue-700 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-      Update
-    </button>
-    <button type="button" class="px-4 py-2 text-sm font-medium text-red-700 bg-transparent border border-red-900 rounded-e-lg hover:bg-red-700 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-red-700 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-      Delete
-    </button>
-                </td>
-            </tr>
+            @endforeach
+     
         </tbody>
     </table>
 </div>
@@ -173,5 +145,11 @@
     </div>
 </div>
 
+@if(session('msg'))
+    <script>
+        var alertType = "{{ session('alert', 'info') }}"; // Default to 'info' if not set
+        alert("{{ session('msg') }}");
+    </script>
+@endif
 </div>
 @stop

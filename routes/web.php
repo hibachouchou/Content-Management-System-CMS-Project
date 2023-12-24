@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,8 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/category', function () {
-    return view('pages.category');
-});
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/create_category', [CategoryController::class, 'create_category']);
+Route::put('/update_category', [CategoryController::class, 'update_category']);
+Route::delete('/destroy_category', [CategoryController::class, 'destroy_category']);
