@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+
       //return  categories list
       public function index(){
         $categories=Category::all();
